@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MVCDemo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_favourite_moves">get favourite moves</string>
+    <string name="get_all_moves">get All moves</string>
+    <string name="exit">exit</string>
+    <string name="add_to_favourite">add to favourite</string>
+    <string name="delete_from_favourite">delete from Favourite</string>
+</resources>
