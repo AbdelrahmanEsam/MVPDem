@@ -1,4 +1,4 @@
-package com.example.mvcdemo.view;
+package com.example.mvcdemo.favouritemovies.view;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,11 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy;
 import com.example.mvcdemo.R;
-import com.example.mvcdemo.controller.OnDeleteClickListener;
-import com.example.mvcdemo.controller.OnFavoriteClickListener;
 import com.example.mvcdemo.model.dto.Product;
 
 import java.util.ArrayList;

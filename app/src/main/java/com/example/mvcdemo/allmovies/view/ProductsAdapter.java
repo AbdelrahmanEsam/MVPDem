@@ -1,4 +1,4 @@
-package com.example.mvcdemo.view;
+package com.example.mvcdemo.allmovies.view;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.DownsampleStrategy;
 import com.example.mvcdemo.R;
-import com.example.mvcdemo.controller.OnFavoriteClickListener;
 import com.example.mvcdemo.model.dto.Product;
 
 import java.util.ArrayList;

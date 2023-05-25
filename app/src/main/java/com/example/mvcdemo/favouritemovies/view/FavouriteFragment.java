@@ -1,4 +1,4 @@
-package com.example.mvcdemo.controller;
+package com.example.mvcdemo.favouritemovies.view;
 
 import android.os.Bundle;
 
@@ -16,20 +16,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mvcdemo.databinding.FragmentFavouriteBinding;
+import com.example.mvcdemo.favouritemovies.presenter.FavouriteProductsPresenter;
 import com.example.mvcdemo.model.dto.Product;
 import com.example.mvcdemo.model.repository.Repository;
-import com.example.mvcdemo.view.FavouriteAdapter;
-import com.example.mvcdemo.view.ProductsAdapter;
+import com.example.mvcdemo.model.repository.RepositoryInterface;
 
 import java.util.List;
 
 
-public class FavouriteFragment extends Fragment implements OnDeleteClickListener{
+public class FavouriteFragment extends Fragment implements OnDeleteClickListener {
 
     private FragmentFavouriteBinding binding;
     NavController controller;
     FavouriteAdapter adapter;
-    Repository repository ;
+    FavouriteProductsPresenter presenter ;
 
 
     @Override
@@ -49,24 +49,26 @@ public class FavouriteFragment extends Fragment implements OnDeleteClickListener
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         controller = Navigation.findNavController(view);
-        repository =   Repository.getInstance(getContext(), getViewLifecycleOwner());
-
         adapter = new FavouriteAdapter();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
-        binding.favouriteRecycler.setLayoutManager(linearLayoutManager);
-        binding.favouriteRecycler.setAdapter(adapter);
-        repository =   Repository.getInstance(getContext(),getViewLifecycleOwner());
-        repository.getFavouriteProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
+        presenter = new FavouriteProductsPresenter(Repository.getInstance(getContext(),getViewLifecycleOwner()));
+        presenter.getFavouriteData().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                Log.d("database size",products.size() + " ");
                 adapter.setData(products,getContext(),FavouriteFragment.this);
             }
         });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
+        binding.favouriteRecycler.setLayoutManager(linearLayoutManager);
+        binding.favouriteRecycler.setAdapter(adapter);
+
+
     }
 
     @Override
     public void onDeleteClickListener(Product product) {
-        repository.deleteProduct(product);
+        presenter.deleteFavouriteProduct(product);
     }
+
+
+
 }

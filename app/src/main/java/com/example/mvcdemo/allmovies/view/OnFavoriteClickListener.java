@@ -1,4 +1,4 @@
-package com.example.mvcdemo.controller;
+package com.example.mvcdemo.allmovies.view;
 
 import com.example.mvcdemo.model.dto.Product;
 

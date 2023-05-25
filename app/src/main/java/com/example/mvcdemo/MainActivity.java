@@ -1,4 +1,4 @@
-package com.example.mvcdemo.controller;
+package com.example.mvcdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
